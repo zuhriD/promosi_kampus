@@ -22,6 +22,8 @@
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+     {{-- Jquery --}}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @yield('script_head')
 
     <script>
@@ -224,6 +226,117 @@
                 },
             },
         });
+
+        var ctx3 = document.getElementById("chartSPK").getContext("2d");
+
+        var gradientStroke1 = ctx3.createLinearGradient(0, 230, 0, 50);
+
+        gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
+        gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+        gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+
+        var gradientStroke2 = ctx3.createLinearGradient(0, 230, 0, 50);
+
+        gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
+        gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+        gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+
+        $.ajax({
+    url: '/dashboard/admin/ranking',
+    method: 'GET',
+    dataType: 'json',
+    success: function(response) {
+        var chartData = response;
+
+        // console.log(chartData);
+        // Sesuaikan data dengan struktur yang dibutuhkan oleh chart
+        var labels = chartData.map(function (data) {
+            return data.nama_alternatif;
+        });
+        var datas = chartData.map(function (data) {
+            return data.rata_rata_hasil;
+        });
+        console.log(datas);
+        var dataset = [];
+        for (var i = 0; i < chartData.length; i++) {
+            dataset[i] = {
+            label: chartData[i].nama_alternatif,
+            data : chartData[i].rata_rata_hasil,
+           }
+        }
+        // Buat chart menggunakan data yang telah diambil
+        var ctx3 = document.getElementById("chartSPK").getContext("2d");
+        new Chart(ctx3, {
+            type: "bar",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Nilai",
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderRadius: 4,
+                    borderSkipped: false,
+                    backgroundColor: "#fff",
+                    data: datas,
+                    maxBarThickness: 6
+                }, ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false,
+                        },
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 500,
+                            beginAtZero: true,
+                            padding: 15,
+                            font: {
+                                size: 14,
+                                family: "Open Sans",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                            color: "#fff"
+                        },
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false
+                        },
+                        ticks: {
+                            display: false
+                        },
+                    },
+                },
+            },
+        });
+    },
+    error: function(error) {
+        console.log(error);
+    }
+});
+
+
+
     </script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;

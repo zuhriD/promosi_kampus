@@ -6,6 +6,7 @@ use App\Models\Quisioner;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,6 +35,12 @@ class HomeController extends Controller
         } else {
             return redirect()->route('schedule.index');
         }
+    }
+
+    public function getDataRanking()
+    {
+        $ranking = DB::table('view_ranking')->get();
+        return response()->json($ranking);
     }
 
     public function profile()

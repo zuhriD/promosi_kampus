@@ -85,6 +85,8 @@ Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth']], function
         Route::post('update', [HomeController::class, 'updateprofile'])->name('profile.update');
     });
 
+    Route::get('ranking', [HomeController::class, 'getDataRanking']);
+
     Route::controller(AkunController::class)
         ->prefix('akun')
         ->as('akun.')
