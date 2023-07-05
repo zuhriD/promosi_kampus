@@ -15,7 +15,6 @@ This is a Laravel project for promosi_kampus.
 
    
 ![Alt Text](ss.png)
-3. Enjoy
 
 ## About Laravel
 
