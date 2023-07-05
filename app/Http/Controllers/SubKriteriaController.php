@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\ImportSubKriteria;
 use App\Models\Kriteria;
 use App\Models\SubKriteria;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SubKriteriaController extends Controller
 {
@@ -22,6 +24,15 @@ class SubKriteriaController extends Controller
         $data['kriteria'] = Kriteria::where('status','1')->get();
         $data['title'] = 'Tambah Sub Kriteria';
         return view('admin.subKriteria.addsubKriteria', $data);
+    }
+
+    // import
+    public function import(Request $request)
+    {
+        
+        $file = $request->file('import');
+    	Excel::import(new ImportSubKriteria, $file);
+    	return back()->with('status', 'Data Berhasil Diimport');
     }
 
 

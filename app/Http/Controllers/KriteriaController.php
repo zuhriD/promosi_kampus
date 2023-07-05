@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\ImportKriteria;
 use App\Models\Kriteria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KriteriaController extends Controller
 {
@@ -28,6 +31,14 @@ class KriteriaController extends Controller
         Kriteria::create($request->all());
 
         return redirect()->route('kriteria.index');
+    }
+
+    public function import(Request $request)
+    {
+        
+        $file = $request->file('import');
+    	Excel::import(new ImportKriteria, $file);
+    	return back()->with('status', 'Data Berhasil Diimport');
     }
 
 

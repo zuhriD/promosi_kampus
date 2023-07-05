@@ -12,10 +12,13 @@
                     <div class="card-header">
                         <div class="row">
 
-                            <h3 class="card-title col-6">
+                            <h3 class="card-title col-4">
                                 <a href="{{ route('kriteria.create') }}" class="btn btn-success"> + Tambah Kriteria</a>
 
                             </h3>
+                            <div class="col-4">
+                                <a href="" class="btn btn-success" data-toggle="modal" data-target="#staticModal"> + Import</a>
+                            </div>
                             @if (session('status'))
                                 <div class="alert alert-success alert-dismissible ">
                                     <button type="button" class="close btn btn-danger btn-close bg-danger"
@@ -24,7 +27,7 @@
                                     {{ session('status') }}
                                 </div>
                             @endif
-                            <div class="card-tools col-6 text-end">
+                            <div class="card-tools col-4 text-end">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
@@ -33,13 +36,14 @@
                                 </button> --}}
                             </div>
                         </div>
-                    </div>
+                      
                     <div class="card-body p-0  table-responsive" style="margin: 20px">
                         <table id="previewAkun" class="table table-striped table-bordered display" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Kriteria</th>
+                                    <th>Bobot</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -49,6 +53,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $data->nama_kriteria }}</td>
+                                        <td>{{ $data->bobot }}</td>
                                         <td>
                                             @if ($data->status === '1')
                                             <a  class="btn btn-success" href="{{route('kriteria.updatestatus',$data->id)}}">
@@ -73,6 +78,32 @@
                         </table>
                     </div>
                     <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Modal --}}
+    <div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticModalLabel">Import Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('kriteria.import') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <input type="file" name="import">
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Import</button>
+                    </form>
                 </div>
             </div>
         </div>

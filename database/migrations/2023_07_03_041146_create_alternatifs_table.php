@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('alternatifs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            // foeregin key
+            $table->unsignedBigInteger('sub_kriteria_id');
+            $table->foreign('sub_kriteria_id')->references('id')->on('sub_kriterias')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('nama_alternatif');
+            $table->string('bobot');
             $table->timestamps();
         });
     }

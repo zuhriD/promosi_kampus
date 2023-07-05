@@ -11,12 +11,17 @@ class SubKriteria extends Model
     protected $fillable =
     [
         'nama_sub',
-        'kriteria_id'
+        'kriteria_id',
+        'bobot'
     ];
 
 
     public function kriteria(){
         return $this->belongsTo(Kriteria::class,'kriteria_id');
+    }
+
+    public function alternatif(){
+        return $this->hasMany(Alternatif::class);
     }
 
 }

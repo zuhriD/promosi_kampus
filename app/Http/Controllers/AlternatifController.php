@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\ImportAlternatif;
 use App\Models\Alternatif;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AlternatifController extends Controller
 {
     public function index()
     {
-        $data['alternatif'] = Alternatif::all();
+        $data['alternatif'] = Alternatif::with('subkriteria')->get();
         $data['title'] = 'Alternatif';
         return view('admin.alternatif.index', $data);
     }
@@ -27,6 +29,15 @@ class AlternatifController extends Controller
         Alternatif::create($request->all());
 
         return redirect()->route('alternatif.index');
+    }
+
+    // import
+    public function import(Request $request)
+    {
+        
+        $file = $request->file('import');
+    	Excel::import(new ImportAlternatif, $file);
+    	return back()->with('status', 'Data Berhasil Diimport');
     }
 
 

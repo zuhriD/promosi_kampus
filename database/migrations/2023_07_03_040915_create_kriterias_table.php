@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('kriterias', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_kriteria');
+            $table->string('bobot');
             $table->string('status')->default('1');;
             $table->timestamps();
         });

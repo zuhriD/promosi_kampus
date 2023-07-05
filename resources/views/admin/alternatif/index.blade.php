@@ -39,7 +39,9 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Nama Sub Kriteria</th>
                                     <th>Nama Alternatif</th>
+                                    <th>Bobot</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -47,7 +49,9 @@
                                 @foreach ($alternatif as $data)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $data->subkriteria->nama_sub }}</td>
                                         <td>{{ $data->nama_alternatif }}</td>
+                                        <td>{{ $data->bobot }}</td>
 
                                         <td>
                                             <a href="{{route('alternatif.edit',$data->id)}}"><i class='fas fa-edit fa-lg'></i></a>
@@ -62,6 +66,32 @@
                         </table>
                     </div>
                     <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+     {{-- modal import --}}
+     <div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticModalLabel">Import Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('alternatif.import') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <input type="file" name="import">
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Import</button>
+                    </form>
                 </div>
             </div>
         </div>

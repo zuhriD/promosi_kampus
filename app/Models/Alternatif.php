@@ -11,7 +11,13 @@ class Alternatif extends Model
 
     protected $fillable =
     [
-        'nama_alternatif'
+        'nama_alternatif',
+        'sub_kriteria_id',
+        'bobot'
     ];
+
+    public function subKriteria(){
+        return $this->belongsTo(SubKriteria::class,'sub_kriteria_id');
+    }
 
 }

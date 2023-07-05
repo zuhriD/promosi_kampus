@@ -134,6 +134,7 @@ Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth']], function
             Route::get('updatestatus/{id}', 'updatestatus')->name('updatestatus');
             Route::post('update/{id}', 'update')->name('update');
             Route::get('delete/{id}', 'destroy')->name('delete');
+            Route::post('import', 'import')->name('import');
         });
 
 
@@ -177,6 +178,7 @@ Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth']], function
             Route::get('edit/{id}', 'edit')->name('edit');
             Route::post('update/{id}', 'update')->name('update');
             Route::get('delete/{id}', 'destroy')->name('delete');
+            Route::post('import', 'import')->name('import');
         });
 
     // Alternatif
@@ -190,6 +192,7 @@ Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth']], function
             Route::get('edit/{id}', 'edit')->name('edit');
             Route::post('update/{id}', 'update')->name('update');
             Route::get('delete/{id}', 'destroy')->name('delete');
+            Route::post('import', 'import')->name('import');
         });
 
     Route::controller(Schedule::class)

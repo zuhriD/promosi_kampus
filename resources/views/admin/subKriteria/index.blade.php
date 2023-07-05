@@ -16,6 +16,9 @@
                                 <a href="{{ route('subKriteria.create') }}" class="btn btn-success"> + Tambah Sub Kriteria</a>
 
                             </h3>
+                            <div class="col-6">
+                                <a href="" class="btn btn-success" data-toggle="modal" data-target="#staticModal"> + Import</a>
+                            </div>
                             @if (session('status'))
                                 <div class="alert alert-success alert-dismissible">
                                     <button type="button" class="close btn btn-danger" data-dismiss="alert"
@@ -41,6 +44,7 @@
                                     <th>No</th>
                                     <th>Nama Sub Kriteria</th>
                                     <th>Nama Kriteria</th>
+                                    <th>Bobot</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -50,6 +54,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $data->nama_sub }}</td>
                                         <td>{{ $data->kriteria->nama_kriteria }}</td>
+                                        <td>{{ $data->bobot }}</td>
                                         <td>
                                             <a href="{{route('subKriteria.edit',$data->id)}}"><i class='fas fa-edit fa-lg'></i></a>
                                             <a style='border: none; background-color:transparent;' href="{{route('subKriteria.delete',$data->id)}}">
@@ -63,6 +68,32 @@
                         </table>
                     </div>
                     <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- modal import --}}
+    <div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticModalLabel">Import Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('subkriteria.import') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <input type="file" name="import">
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Import</button>
+                    </form>
                 </div>
             </div>
         </div>
