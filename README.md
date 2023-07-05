@@ -12,6 +12,8 @@ This is a Laravel project for promosi_kampus.
 
 ## Running
 1. Import Excel Urut terlebih dahulu dari Kriteria hingga Alternatif dengan syarat tidak perlu judul di excel rownya, ini contohnya
+
+   
 ![Alt Text](ss.png)
 3. Enjoy
 
