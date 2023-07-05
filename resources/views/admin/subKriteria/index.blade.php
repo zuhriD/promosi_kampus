@@ -12,11 +12,11 @@
                     <div class="card-header">
                         <div class="row">
 
-                            <h3 class="card-title col-6">
+                            <h3 class="card-title col-4">
                                 <a href="{{ route('subKriteria.create') }}" class="btn btn-success"> + Tambah Sub Kriteria</a>
 
                             </h3>
-                            <div class="col-6">
+                            <div class="col-4">
                                 <a href="" class="btn btn-success" data-toggle="modal" data-target="#staticModal"> + Import</a>
                             </div>
                             @if (session('status'))
@@ -27,7 +27,7 @@
                                     {{ session('status') }}
                                 </div>
                             @endif
-                            <div class="card-tools col-6 text-end">
+                            <div class="card-tools col-4 text-end">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
@@ -83,7 +83,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('subkriteria.import') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('subKriteria.import') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <input type="file" name="import">

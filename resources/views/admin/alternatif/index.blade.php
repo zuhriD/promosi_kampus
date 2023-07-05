@@ -12,10 +12,13 @@
                     <div class="card-header">
                         <div class="row">
 
-                            <h3 class="card-title col-6">
-                                <a href="{{ route('jenis-kuis.create') }}" class="btn btn-success"> + Tambah Alternatif</a>
+                            <h3 class="card-title col-4">
+                                <a href="{{ route('alternatif.create') }}" class="btn btn-success"> + Tambah Alternatif</a>
 
                             </h3>
+                            <div class="col-4">
+                                <a href="" class="btn btn-success" data-toggle="modal" data-target="#staticModal"> + Import</a>
+                            </div>
                             @if (session('status'))
                                 <div class="alert alert-success alert-dismissible">
                                     <button type="button" class="close btn btn-danger" data-dismiss="alert"
@@ -24,7 +27,7 @@
                                     {{ session('status') }}
                                 </div>
                             @endif
-                            <div class="card-tools col-6 text-end">
+                            <div class="card-tools col-4 text-end">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
