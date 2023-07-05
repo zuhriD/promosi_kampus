@@ -1,6 +1,6 @@
 # Baca Sebelum RUN
 
-This is a Laravel project for ngebengkel.
+This is a Laravel project for promosi_kampus.
 
 ## Before Running
 
