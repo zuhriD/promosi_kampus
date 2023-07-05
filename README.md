@@ -11,8 +11,9 @@ This is a Laravel project for promosi_kampus.
 5. Run `php artisan key:generate` before running the project
 
 ## Running
-1. Import Excel Urut terlebih dahulu dari Kriteria dengan syarat tidak perlu judul di excel rownya
-2. Enjoy
+1. Import Excel Urut terlebih dahulu dari Kriteria hingga Alternatif dengan syarat tidak perlu judul di excel rownya, ini contohnya
+![Alt Text](ss.png)
+3. Enjoy
 
 ## About Laravel
 
