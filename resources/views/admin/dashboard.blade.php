@@ -29,7 +29,7 @@
                         </div>
                         <h6 class="ms-2 mt-4 mb-0"> Metode Promosi </h6>
                         <p class="text-sm ms-2"> (<span class="font-weight-bolder">2022</span>) On Last Years </p>
-                        {{-- <div class="container border-radius-lg">
+                        <div class="container border-radius-lg">
                             <div class="row">
                                 <div class="col-3 py-3 ps-0">
                                     <div class="d-flex mb-2">
@@ -155,7 +155,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>
