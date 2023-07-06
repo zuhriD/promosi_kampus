@@ -35,45 +35,23 @@ public function index()
         $data['title'] = 'Dashboard';
 
         $sosial_media = DB::table('view_ranking')->where('nama_alternatif', 'sosial media')->first();
-        dd($sosial_media);
-        if ($sosial_media == null) {
-            $data['sosial_media'] = '0.00';
-        } else {
-            $data['sosial_media'] = $sosial_media->nama_alternatif;
-        }
+        $data['sosial_media'] = $sosial_media ? $sosial_media->nama_alternatif : ['nama_alternatif' => ' ', 'rata_rata_hasil' => 0.00];
 
         $website = DB::table('view_ranking')->where('nama_alternatif', 'website')->first();
-    
-
-        if ($website == null) {
-            $data['website'] = '0.00';
-        } else {
-            $data['website'] = $website->nama_alternatif;
-        }
+        $data['website'] = $website ? $website->nama_alternatif : ['nama_alternatif' => ' ', 'rata_rata_hasil' => 0.00];
 
         $berjumpa = DB::table('view_ranking')->where('nama_alternatif', 'berjumpa langsung dengan pihak kampus')->first();
-        
-
-        if ($berjumpa == null) {
-            $data['berjumpa'] = '0.00';
-        } else {
-            $data['berjumpa'] = $berjumpa->nama_alternatif;
-        }
+        $data['berjumpa'] = $berjumpa ? $berjumpa->nama_alternatif : ['nama_alternatif' => ' ', 'rata_rata_hasil' => 0.00];
 
         $media_cetak = DB::table('view_ranking')->where('nama_alternatif', 'media cetak')->first();
-        
-
-        if ($media_cetak == null) {
-            $data['media_cetak'] = '0.00';
-        } else {
-            $data['media_cetak'] = $media_cetak->nama_alternatif;
-        }
+        $data['media_cetak'] = $media_cetak ? $media_cetak->nama_alternatif : ['nama_alternatif' => ' ', 'rata_rata_hasil' => 0.00];
 
         return view('admin.dashboard', $data);
     } else {
         return redirect()->route('schedule.index');
     }
 }
+
 
 
     public function getDataRanking()
