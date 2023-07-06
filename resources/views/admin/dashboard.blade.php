@@ -24,7 +24,7 @@
                     <div class="card-body p-3">
                         <div class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3">
                             <div class="chart">
-                                <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
+                                <canvas id="chartSPK" class="chart-canvas" height="170"></canvas>
                             </div>
                         </div>
                         <h6 class="ms-2 mt-4 mb-0"> Metode Promosi </h6>
@@ -56,9 +56,9 @@
                                                 </g>
                                             </svg>
                                         </div>
-                                        <p class="text-xs mt-1 mb-0 font-weight-bold">Poster</p>
+                                        <p class="text-xs mt-1 mb-0 font-weight-bold">{{ $sosial_media->nama_alternatif }}</p>
                                     </div>
-                                    <h4 class="font-weight-bolder">360</h4>
+                                    <h4 class="font-weight-bolder"> {{ number_format($sosial_media->rata_rata_hasil,3) }}</h4>
                                     <div class="progress w-75">
                                         <div class="progress-bar bg-dark w-60" role="progressbar" aria-valuenow="60"
                                             aria-valuemin="0" aria-valuemax="100"></div>
@@ -95,9 +95,9 @@
                                                 </g>
                                             </svg>
                                         </div>
-                                        <p class="text-xs mt-1 mb-0 font-weight-bold">OTS</p>
+                                        <p class="text-xs mt-1 mb-0 font-weight-bold">{{ $website->nama_alternatif }}</p>
                                     </div>
-                                    <h4 class="font-weight-bolder">200</h4>
+                                    <h4 class="font-weight-bolder">{{ number_format($website->rata_rata_hasil, 3) }}</h4>
                                     <div class="progress w-75">
                                         <div class="progress-bar bg-dark w-90" role="progressbar" aria-valuenow="90"
                                             aria-valuemin="0" aria-valuemax="100"></div>
@@ -128,9 +128,9 @@
                                                 </g>
                                             </svg>
                                         </div>
-                                        <p class="text-xs mt-1 mb-0 font-weight-bold">Baligo</p>
+                                        <p class="text-xs mt-1 mb-0 font-weight-bold">{{ $berjumpa->nama_alternatif }}</p>
                                     </div>
-                                    <h4 class="font-weight-bolder">435</h4>
+                                    <h4 class="font-weight-bolder">{{ number_format($berjumpa->rata_rata_hasil, 3) }}</h4>
                                     <div class="progress w-75">
                                         <div class="progress-bar bg-dark w-30" role="progressbar" aria-valuenow="30"
                                             aria-valuemin="0" aria-valuemax="100"></div>
@@ -143,9 +143,9 @@
                                             <i class="fa fa-user "></i>
 
                                         </div>
-                                        <p class="text-xs mt-1 mb-0 font-weight-bold">Person</p>
+                                        <p class="text-xs mt-1 mb-0 font-weight-bold">{{ $media_cetak->nama_alternatif }}</p>
                                     </div>
-                                    <h4 class="font-weight-bolder">100</h4>
+                                    <h4 class="font-weight-bolder">{{ number_format($media_cetak->rata_rata_hasil, 3) }}</h4>
                                     <div class="progress w-75">
                                         <div class="progress-bar bg-dark w-50" role="progressbar" aria-valuenow="50"
                                             aria-valuemin="0" aria-valuemax="100"></div>
@@ -168,22 +168,6 @@
                     <div class="card-body p-3">
                         <div class="chart">
                             <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-lg-12">
-                <div class="card z-index-2">
-                    <div class="card-header pb-0">
-                        <h6>SPK AHP Graph</h6>
-                    </div>
-                    <div class="card-body p-3">
-                        <div class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3">
-                            <div class="chart">
-                                <canvas id="chartSPK" class="chart-canvas" height="170"></canvas>
-                            </div>
                         </div>
                     </div>
                 </div>

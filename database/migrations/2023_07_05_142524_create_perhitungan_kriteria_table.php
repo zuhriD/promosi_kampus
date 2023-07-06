@@ -16,9 +16,9 @@ return new class extends Migration
     {
         $sql = '
         CREATE VIEW view_hasil_perhitungan_kriteria AS
-SELECT k.nama_kriteria AS kriteria, s.nama_sub AS subkriteria, k.bobot * s.bobot AS hasil
-FROM kriterias k
-INNER JOIN sub_kriterias s ON k.id = s.kriteria_id
+        SELECT k.nama_kriteria AS kriteria, s.nama_sub AS subkriteria, k.bobot * s.bobot AS hasil
+        FROM kriterias k
+        INNER JOIN sub_kriterias s ON k.id = s.kriteria_id
 ';
         DB::statement($sql);
     }

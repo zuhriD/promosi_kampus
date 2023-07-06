@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Termwind\Components\Dd;
 
 class HomeController extends Controller
 {
@@ -31,6 +32,10 @@ class HomeController extends Controller
     {
         if (Auth::user()->role < 5) {
             $data['title'] = 'Dashboard';
+            $data['sosial_media'] = DB::table('view_ranking')->where('nama_alternatif', 'sosial media')->first();
+            $data['website'] = DB::table('view_ranking')->where('nama_alternatif', 'website')->first();
+            $data['berjumpa'] = DB::table('view_ranking')->where('nama_alternatif', 'berjumpa langsung dengan pihak kampus')->first();
+            $data['media_cetak'] = DB::table('view_ranking')->where('nama_alternatif', 'media cetak')->first();
             return view('admin.dashboard', $data);
         } else {
             return redirect()->route('schedule.index');

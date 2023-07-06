@@ -58,20 +58,57 @@
     <script src="{{ asset('/admin/js/plugins/chartjs.min.js') }}"></script>
 
     <script>
-        var ctx = document.getElementById("chart-bars").getContext("2d");
 
-        new Chart(ctx, {
+       
+
+        $.ajax({
+    url: '/dashboard/admin/ranking',
+    method: 'GET',
+    dataType: 'json',
+    success: function(response) {
+        var chartData = response;
+
+        // console.log(chartData);
+        // Sesuaikan data dengan struktur yang dibutuhkan oleh chart
+        var labels = chartData.map(function (data) {
+            return data.nama_alternatif;
+        });
+        var datas = chartData.map(function (data) {
+            return data.rata_rata_hasil;
+        });
+        console.log(datas);
+        var dataset = [];
+        for (var i = 0; i < chartData.length; i++) {
+            dataset[i] = {
+            label: chartData[i].nama_alternatif,
+            data : chartData[i].rata_rata_hasil,
+           }
+        }
+        var ctx3 = document.getElementById("chartSPK").getContext("2d");
+
+        var gradientStroke1 = ctx3.createLinearGradient(0, 230, 0, 50);
+
+        gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
+        gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+        gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+
+        var gradientStroke2 = ctx3.createLinearGradient(0, 230, 0, 50);
+
+        gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
+        gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+        gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+        new Chart(ctx3, {
             type: "bar",
             data: {
-                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                labels: labels,
                 datasets: [{
-                    label: "Sales",
+                    label: "Nilai",
                     tension: 0.4,
                     borderWidth: 0,
                     borderRadius: 4,
                     borderSkipped: false,
                     backgroundColor: "#fff",
-                    data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
+                    data: datas,
                     maxBarThickness: 6
                 }, ],
             },
@@ -123,7 +160,11 @@
                 },
             },
         });
-
+    },
+    error: function(error) {
+        console.log(error);
+    }
+});
 
         var ctx2 = document.getElementById("chart-line").getContext("2d");
 
@@ -227,113 +268,7 @@
             },
         });
 
-        var ctx3 = document.getElementById("chartSPK").getContext("2d");
-
-        var gradientStroke1 = ctx3.createLinearGradient(0, 230, 0, 50);
-
-        gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
-        gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-        gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
-
-        var gradientStroke2 = ctx3.createLinearGradient(0, 230, 0, 50);
-
-        gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
-        gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-        gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
-
-        $.ajax({
-    url: '/dashboard/admin/ranking',
-    method: 'GET',
-    dataType: 'json',
-    success: function(response) {
-        var chartData = response;
-
-        // console.log(chartData);
-        // Sesuaikan data dengan struktur yang dibutuhkan oleh chart
-        var labels = chartData.map(function (data) {
-            return data.nama_alternatif;
-        });
-        var datas = chartData.map(function (data) {
-            return data.rata_rata_hasil;
-        });
-        console.log(datas);
-        var dataset = [];
-        for (var i = 0; i < chartData.length; i++) {
-            dataset[i] = {
-            label: chartData[i].nama_alternatif,
-            data : chartData[i].rata_rata_hasil,
-           }
-        }
-        // Buat chart menggunakan data yang telah diambil
-        var ctx3 = document.getElementById("chartSPK").getContext("2d");
-        new Chart(ctx3, {
-            type: "bar",
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: "Nilai",
-                    tension: 0.4,
-                    borderWidth: 0,
-                    borderRadius: 4,
-                    borderSkipped: false,
-                    backgroundColor: "#fff",
-                    data: datas,
-                    maxBarThickness: 6
-                }, ],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false,
-                    }
-                },
-                interaction: {
-                    intersect: false,
-                    mode: 'index',
-                },
-                scales: {
-                    y: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false,
-                        },
-                        ticks: {
-                            suggestedMin: 0,
-                            suggestedMax: 500,
-                            beginAtZero: true,
-                            padding: 15,
-                            font: {
-                                size: 14,
-                                family: "Open Sans",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                            color: "#fff"
-                        },
-                    },
-                    x: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false
-                        },
-                        ticks: {
-                            display: false
-                        },
-                    },
-                },
-            },
-        });
-    },
-    error: function(error) {
-        console.log(error);
-    }
-});
+        
 
 
 
