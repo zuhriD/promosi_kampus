@@ -44,7 +44,7 @@
                                     <th>No</th>
                                     <th>Nama Kriteria</th>
                                     <th>Bobot</th>
-                                    <th>Status</th>
+                                    {{-- <th>Status</th> --}}
                                     {{-- <th>Action</th> --}}
                                 </tr>
                             </thead>
@@ -54,7 +54,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $data->nama_kriteria }}</td>
                                         <td>{{ $data->bobot }}</td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($data->status === '1')
                                             <a  class="btn btn-success" href="{{route('kriteria.updatestatus',$data->id)}}">
                                               Active
@@ -64,7 +64,7 @@
                                                Non Active
                                             </a>
                                             @endif
-                                        </td>
+                                        </td> --}}
                                         {{-- <td>
                                             <a href="{{route('kriteria.edit',$data->id)}}"><i class='fas fa-edit fa-lg'></i></a>
                                             <a style='border: none; background-color:transparent;' href="{{route('kriteria.delete',$data->id)}}">
