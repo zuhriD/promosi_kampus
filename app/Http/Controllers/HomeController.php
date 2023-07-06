@@ -29,18 +29,28 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        if (Auth::user()->role < 5) {
-            $data['title'] = 'Dashboard';
-            $data['sosial_media'] = DB::table('view_ranking')->where('nama_alternatif', 'sosial media')->first();
-            $data['website'] = DB::table('view_ranking')->where('nama_alternatif', 'website')->first();
-            $data['berjumpa'] = DB::table('view_ranking')->where('nama_alternatif', 'berjumpa langsung dengan pihak kampus')->first();
-            $data['media_cetak'] = DB::table('view_ranking')->where('nama_alternatif', 'media cetak')->first();
-            return view('admin.dashboard', $data);
-        } else {
-            return redirect()->route('schedule.index');
-        }
+{
+    if (Auth::user()->role < 5) {
+        $data['title'] = 'Dashboard';
+
+        $sosial_media = DB::table('view_ranking')->where('nama_alternatif', 'sosial media')->first();
+        $data['sosial_media'] = $sosial_media ? $sosial_media->nama_alternatif : '0.00';
+
+        $website = DB::table('view_ranking')->where('nama_alternatif', 'website')->first();
+        $data['website'] = $website ? $website->nama_alternatif : '0.00';
+
+        $berjumpa = DB::table('view_ranking')->where('nama_alternatif', 'berjumpa langsung dengan pihak kampus')->first();
+        $data['berjumpa'] = $berjumpa ? $berjumpa->nama_alternatif : '0.00';
+
+        $media_cetak = DB::table('view_ranking')->where('nama_alternatif', 'media cetak')->first();
+        $data['media_cetak'] = $media_cetak ? $media_cetak->nama_alternatif : '0.00';
+
+        return view('admin.dashboard', $data);
+    } else {
+        return redirect()->route('schedule.index');
     }
+}
+
 
     public function getDataRanking()
     {
