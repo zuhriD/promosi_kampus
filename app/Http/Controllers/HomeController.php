@@ -35,7 +35,7 @@ public function index()
         $data['title'] = 'Dashboard';
 
         $sosial_media = DB::table('view_ranking')->where('nama_alternatif', 'sosial media')->first();
-        dd($sosial_media)
+        dd($sosial_media);
         if ($sosial_media == null) {
             $data['sosial_media'] = '0.00';
         } else {
