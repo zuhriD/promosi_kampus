@@ -45,11 +45,26 @@ class HomeController extends Controller
         $media_cetak = DB::table('view_ranking')->where('nama_alternatif', 'media cetak')->first();
         $data['media_cetak'] = $media_cetak ? $media_cetak->nama_alternatif : '0.00';
 
+        // Check if the data is empty and assign '0.00' if so
+        if (empty($data['sosial_media'])) {
+            $data['sosial_media'] = '0.00';
+        }
+        if (empty($data['website'])) {
+            $data['website'] = '0.00';
+        }
+        if (empty($data['berjumpa'])) {
+            $data['berjumpa'] = '0.00';
+        }
+        if (empty($data['media_cetak'])) {
+            $data['media_cetak'] = '0.00';
+        }
+
         return view('admin.dashboard', $data);
     } else {
         return redirect()->route('schedule.index');
     }
 }
+
 
 
     public function getDataRanking()
