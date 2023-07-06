@@ -28,35 +28,45 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    
+public function index()
 {
     if (Auth::user()->role < 5) {
         $data['title'] = 'Dashboard';
 
         $sosial_media = DB::table('view_ranking')->where('nama_alternatif', 'sosial media')->first();
-        $data['sosial_media'] = $sosial_media ? $sosial_media->nama_alternatif : '0.00';
+        dd($sosial_media)
+        if ($sosial_media == null) {
+            $data['sosial_media'] = '0.00';
+        } else {
+            $data['sosial_media'] = $sosial_media->nama_alternatif;
+        }
 
         $website = DB::table('view_ranking')->where('nama_alternatif', 'website')->first();
-        $data['website'] = $website ? $website->nama_alternatif : '0.00';
+    
+
+        if ($website == null) {
+            $data['website'] = '0.00';
+        } else {
+            $data['website'] = $website->nama_alternatif;
+        }
 
         $berjumpa = DB::table('view_ranking')->where('nama_alternatif', 'berjumpa langsung dengan pihak kampus')->first();
-        $data['berjumpa'] = $berjumpa ? $berjumpa->nama_alternatif : '0.00';
+        
+
+        if ($berjumpa == null) {
+            $data['berjumpa'] = '0.00';
+        } else {
+            $data['berjumpa'] = $berjumpa->nama_alternatif;
+        }
 
         $media_cetak = DB::table('view_ranking')->where('nama_alternatif', 'media cetak')->first();
-        $data['media_cetak'] = $media_cetak ? $media_cetak->nama_alternatif : '0.00';
+        
 
-        // Check if the data is empty and assign '0.00' if so
-        if (empty($data['sosial_media'])) {
-            $data['sosial_media'] = '0.00';
-        }
-        if (empty($data['website'])) {
-            $data['website'] = '0.00';
-        }
-        if (empty($data['berjumpa'])) {
-            $data['berjumpa'] = '0.00';
-        }
-        if (empty($data['media_cetak'])) {
+        if ($media_cetak == null) {
             $data['media_cetak'] = '0.00';
+        } else {
+            $data['media_cetak'] = $media_cetak->nama_alternatif;
         }
 
         return view('admin.dashboard', $data);
@@ -64,7 +74,6 @@ class HomeController extends Controller
         return redirect()->route('schedule.index');
     }
 }
-
 
 
     public function getDataRanking()
