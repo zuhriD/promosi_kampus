@@ -12,13 +12,13 @@
                     <div class="card-header">
                         <div class="row">
 
-                            <h3 class="card-title col-4">
+                            {{-- <h3 class="card-title col-4">
                                 <a href="{{ route('kriteria.create') }}" class="btn btn-success"> + Tambah Kriteria</a>
 
-                            </h3>
-                            <div class="col-4">
+                            </h3> --}}
+                            <h3 class="col-4">
                                 <a href="" class="btn btn-success" data-toggle="modal" data-target="#staticModal"> + Import</a>
-                            </div>
+                            </h3>
                             @if (session('status'))
                                 <div class="alert alert-success alert-dismissible ">
                                     <button type="button" class="close btn btn-danger btn-close bg-danger"
@@ -45,7 +45,7 @@
                                     <th>Nama Kriteria</th>
                                     <th>Bobot</th>
                                     <th>Status</th>
-                                    <th>Action</th>
+                                    {{-- <th>Action</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,11 +65,11 @@
                                             </a>
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             <a href="{{route('kriteria.edit',$data->id)}}"><i class='fas fa-edit fa-lg'></i></a>
                                             <a style='border: none; background-color:transparent;' href="{{route('kriteria.delete',$data->id)}}">
                                                 <i class='fas fa-trash fa-lg text-danger'></i></a>
-                                        </td>
+                                        </td> --}}
                                     <tr>
                                 @endforeach
 
