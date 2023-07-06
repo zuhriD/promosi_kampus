@@ -16,7 +16,7 @@
                                 <a href="{{ route('kriteria.create') }}" class="btn btn-success"> + Tambah Kriteria</a>
 
                             </h3> --}}
-                            <h3 class="col-4">
+                            <h3 class="col-6">
                                 <a href="" class="btn btn-success" data-toggle="modal" data-target="#staticModal"> + Import</a>
                             </h3>
                             @if (session('status'))
@@ -27,7 +27,7 @@
                                     {{ session('status') }}
                                 </div>
                             @endif
-                            <div class="card-tools col-4 text-end">
+                            <div class="card-tools col-6 text-end">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
