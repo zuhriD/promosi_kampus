@@ -60,7 +60,8 @@
                                     </div>
                                     <h4 class="font-weight-bolder"> {{ number_format($sosial_media->rata_rata_hasil,3) }}</h4>
                                     <div class="progress w-75">
-                                        <div class="progress-bar bg-dark w-60" role="progressbar" aria-valuenow="60"
+                                        <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="{{ number_format($sosial_media->rata_rata_hasil,3) }}"
+                                            style="width: {{ number_format($sosial_media->rata_rata_hasil,3)*1000 }}%;"
                                             aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -99,7 +100,7 @@
                                     </div>
                                     <h4 class="font-weight-bolder">{{ number_format($website->rata_rata_hasil, 3) }}</h4>
                                     <div class="progress w-75">
-                                        <div class="progress-bar bg-dark w-90" role="progressbar" aria-valuenow="90"
+                                        <div class="progress-bar bg-dark" role="progressbar" style="width: {{ number_format($website->rata_rata_hasil, 3) * 1000}}% !important" aria-valuenow="{{ number_format($website->rata_rata_hasil, 3) }}"
                                             aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -132,7 +133,8 @@
                                     </div>
                                     <h4 class="font-weight-bolder">{{ number_format($berjumpa->rata_rata_hasil, 3) }}</h4>
                                     <div class="progress w-75">
-                                        <div class="progress-bar bg-dark w-30" role="progressbar" aria-valuenow="30"
+                                        <div class="progress-bar bg-dark " role="progressbar" aria-valuenow="{{ number_format($berjumpa->rata_rata_hasil, 3) }}"
+                                            style="width: {{ number_format($berjumpa->rata_rata_hasil, 3) * 1000}}% !important" 
                                             aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -147,7 +149,8 @@
                                     </div>
                                     <h4 class="font-weight-bolder">{{ number_format($media_cetak->rata_rata_hasil, 3) }}</h4>
                                     <div class="progress w-75">
-                                        <div class="progress-bar bg-dark w-50" role="progressbar" aria-valuenow="50"
+                                        <div class="progress-bar bg-dark " role="progressbar" aria-valuenow="{{ number_format($media_cetak->rata_rata_hasil, 3) }}"
+                                            style="width: {{ number_format($media_cetak->rata_rata_hasil, 3) * 1000}}% !important"
                                             aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
